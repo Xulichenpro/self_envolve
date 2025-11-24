@@ -33,7 +33,7 @@ def get_response(system_msg:str , msg:str , msg_history:List[dict] = None , temp
 
 def process_tool() -> List[dict]:
     tools = []
-    tools_dir = os.path.join(os.getcwd(), "tools")
+    tools_dir = os.path.join(os.getcwd(),"tools")
     folder = Path(tools_dir)
 
     for py_file in folder.glob("*.py"):

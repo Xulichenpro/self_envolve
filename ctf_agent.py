@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import argparse
 
 import llm
 import tree
@@ -19,9 +20,7 @@ def solve_ctf(agent_name:str):
 
     # 2. 创建Handler（文件输出）
     cwd = os.getcwd()
-    log_dir = os.path.join(cwd, agent_name)
-    os.makedirs(log_dir, exist_ok=True)   # 自动创建目录
-    log_path = os.path.join(log_dir, agent_name + ".log")
+    log_path = os.path.join(cwd, agent_name + ".log")
     file_handler = logging.FileHandler(log_path, encoding="utf-8")
     file_handler.setLevel(logging.DEBUG)
 
@@ -38,4 +37,8 @@ def solve_ctf(agent_name:str):
     
 
 if __name__ == "__main__":
-    solve_ctf("initial")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--agent_name","-n",required=True)
+
+    args = parser.parse_args()
+    solve_ctf(args.agent_name)
