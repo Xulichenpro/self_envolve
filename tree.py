@@ -6,6 +6,7 @@ class Node:
     id:int
     name:str
     parent:int
+    eval:bool = False
 
 class Tree:
     def __init__(self):

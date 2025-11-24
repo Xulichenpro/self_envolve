@@ -3,6 +3,7 @@ import json
 import logging
 
 import llm
+import tree
 from prompts.ctf_agent_prompt import system_prompt,user_prompt
 
 def solve_ctf(agent_name:str):
@@ -32,6 +33,9 @@ def solve_ctf(agent_name:str):
     # 4. 给Logger添加Handler
     logger.addHandler(file_handler)
     llm.get_response_with_tools(system_prompt,msg,tools,logger)
+    node = tree.nodes.query(agent_name)
+    node.eval = True
+    
 
 if __name__ == "__main__":
     solve_ctf("initial")
