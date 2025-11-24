@@ -1,10 +1,15 @@
 import os
+import time
 import shutil
 import tempfile
 import subprocess
 from typing import List
 
 import tree
+
+def get_agent_name() -> str:
+    current_time = str(int(time.time()))
+    return "ctf_agent" + current_time
 
 def copy_folder(source:str,target:str):
     cwd = os.getcwd()
